@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">mad_rental</string>
-    <string name="aucun_reseau">Aucun réseau</string>
+    <string name="no_network">Aucun réseau</string>
 </resources>
