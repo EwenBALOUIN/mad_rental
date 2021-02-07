@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "cars")
 data class Car(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Integer,
     val nom: String,
     val image: String,
     val disponible: Boolean,
@@ -14,6 +14,4 @@ data class Car(
     val agemin: Integer,
     val categorieco2: String,
     val favorite: Boolean,
-    val equipements: List<Equipement>,
-    val options: List<Option>
     )
