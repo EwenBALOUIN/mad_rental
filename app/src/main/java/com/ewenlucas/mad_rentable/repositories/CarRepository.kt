@@ -10,6 +10,7 @@ import com.ewenlucas.mad_rentable.webservices.WebInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.random.Random
 
 class CarRepository
 {
@@ -18,12 +19,12 @@ class CarRepository
     /**
      * Récupère les informations des véhicules.
      */
-    fun getLiveDataCar(liveDataCar: MutableLiveData<String>, liveDataErreur: MutableLiveData<String>, context: Context)
+    fun getLiveDataCar(liveDataCar: MutableLiveData<String>, liveDataError: MutableLiveData<String>, context: Context)
     {
         // vérification de l'état de la connexion internet :
         if (!NetworkHelper.isConnected(context))
         {
-            liveDataErreur.value = context.getString(R.string.no_network)
+            liveDataError.value = context.getString(R.string.no_network)
             return
         }
 
@@ -34,17 +35,21 @@ class CarRepository
                 if (response.isSuccessful) {
                     val listCars = response.body()
                     listCars?.results?.let { list ->
+                        val car = list[Random.nextInt(0, list.size)]
 
-                        for (car in list) {
-                            //TODO make saving data for api car list and get image
-                        }
+                        // création du texte :
+                        val stringBuilder = StringBuilder()
+                        stringBuilder.append(context.getString(R.string.main_car_nom, car.nom))
+
+                        // affichage final :
+                        liveDataCar.value = stringBuilder.toString()
 
                     }
                 }
             }
 
             override fun onFailure(call: Call<ListCars>, t: Throwable) {
-                liveDataErreur.value = t.message
+                liveDataError.value = t.message
             }
 
         })
