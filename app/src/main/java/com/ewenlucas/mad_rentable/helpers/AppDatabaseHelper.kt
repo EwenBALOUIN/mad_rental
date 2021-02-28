@@ -25,7 +25,7 @@ class AppDatabaseHelper(context: Context)
 
     // Base de données :
     val database: AppDatabase = Room
-        .databaseBuilder(context.applicationContext, AppDatabase::class.java, "cars.db")
+        .databaseBuilder(context.applicationContext, AppDatabase::class.java, "madrental.db")
         .allowMainThreadQueries()
         .build()
 }
