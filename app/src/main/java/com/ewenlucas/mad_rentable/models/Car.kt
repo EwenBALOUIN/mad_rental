@@ -1,17 +1,16 @@
 package com.ewenlucas.mad_rentable.models
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+
 
 @Entity(tableName = "cars")
 data class Car(
     @PrimaryKey(autoGenerate = true)
-    val id: Integer,
+    val id: Long = 0,
     val nom: String,
     val image: String,
     val disponible: Boolean,
-    val prixjournalierbase: Integer,
-    val promotion: Integer,
-    val agemin: Integer,
+    val prixjournalierbase: Int,
+    val promotion: Int,
+    val agemin: Int,
     val categorieco2: String,
-    val favorite: Boolean,
     )

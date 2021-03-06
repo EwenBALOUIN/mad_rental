@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">mad_rental</string>
     <string name="no_network">Aucun réseau</string>
+    <string name="prixjournalierbase">€ / jour</string>
+    <string name="categorieco2">Catégorie C02:</string>
+
 </resources>

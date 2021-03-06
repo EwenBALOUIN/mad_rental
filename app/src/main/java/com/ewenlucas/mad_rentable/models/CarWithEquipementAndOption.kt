@@ -1,21 +1,19 @@
 package com.ewenlucas.mad_rentable.models
 
-import androidx.room.Embedded
-import androidx.room.Relation
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-
-data class CarWithEquipementAndOption (
-    @Embedded val car: Car,
-
-    @Relation(
-        parentColumn = "id",
-        entityColumn = "carId"
-    )
+@Entity(tableName = "fullcars")
+data class CarWithEquipementAndOption(
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
+    val nom: String,
+    val image: String,
+    val disponible: Int,
+    val prixjournalierbase: Int,
+    val promotion: Int,
+    val agemin: Int,
+    val categorieco2: String,
     val equipements: List<Equipement>,
-
-    @Relation(
-        parentColumn = "id",
-        entityColumn = "carId"
-    )
     val options: List<Option>
 )
