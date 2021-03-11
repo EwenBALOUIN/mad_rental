@@ -3,6 +3,7 @@ package com.ewenlucas.mad_rentable.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Switch
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private val serviceRetrofit = RetrofitSingleton.retrofit.create(WebInterface::class.java)
 
     var listeCars = ArrayList<CarWithEquipementAndOption>()
+    lateinit var switchFavorite: Switch
     lateinit var recyclerView: RecyclerView
     lateinit var adapter:ApiCarAdapter
 
@@ -36,24 +38,38 @@ class MainActivity : AppCompatActivity() {
         // init :
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        switchFavorite = findViewById(R.id.switch_favorite)
         recyclerView = findViewById(R.id.cars_list)
         recyclerView.setHasFixedSize(true)
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        var equipement = listOf(Equipement(2,"perpito"))
-        var option = listOf(Option(3, "pepepe", 12))
-//        var car = CarWithEquipementAndOption(1,
-//            "oui",
-//            "zoom-buggy.jpg",
-//            1,
-//            27,
-//            2,
-//            2,
-//            "A",
-//            equipement,
-//            option
-//            )
+        switchFavorite?.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                listeCars = ArrayList<CarWithEquipementAndOption>()
+                var equipement = listOf(Equipement(2,"perpito"))
+                var option = listOf(Option(3, "pepepe", 12))
+                var car = CarWithEquipementAndOption(1,
+                    "oui",
+                    "zoom-buggy.jpg",
+                    1,
+                    27,
+                    2,
+                    2,
+                    "A",
+                    equipement,
+                    option
+                    )
+                val apiCarAdapter = ApiCarAdapter(mutableListOf(car))
+                recyclerView.adapter = apiCarAdapter
+            }
+            else {
+                listeCars = ArrayList<CarWithEquipementAndOption>()
+                val apiCarAdapter = ApiCarAdapter(listeCars)
+                recyclerView.adapter = apiCarAdapter
+                getLiveDataCar()
+            }
+        }
 
         val apiCarAdapter = ApiCarAdapter(listeCars)
         recyclerView.adapter = apiCarAdapter
