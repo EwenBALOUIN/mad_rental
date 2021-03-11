@@ -3,5 +3,5 @@
     <string name="no_network">Aucun réseau</string>
     <string name="prixjournalierbase">€ / jour</string>
     <string name="categorieco2">Catégorie C02:</string>
-
+    <string name="label_favorite">Favoris</string>
 </resources>
