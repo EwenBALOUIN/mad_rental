@@ -15,7 +15,6 @@ import com.ewenlucas.mad_rentable.models.Option
 import com.ewenlucas.mad_rentable.repositories.CarRepository
 import com.ewenlucas.mad_rentable.webservices.RetrofitSingleton
 import com.ewenlucas.mad_rentable.webservices.WebInterface
-import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,18 +59,18 @@ class MainActivity : AppCompatActivity() {
                     equipement,
                     option
                     )
-                val apiCarAdapter = ApiCarAdapter(mutableListOf(car))
+                val apiCarAdapter = ApiCarAdapter(mutableListOf(car), this)
                 recyclerView.adapter = apiCarAdapter
             }
             else {
                 listeCars = ArrayList<CarWithEquipementAndOption>()
-                val apiCarAdapter = ApiCarAdapter(listeCars)
+                val apiCarAdapter = ApiCarAdapter(listeCars, this)
                 recyclerView.adapter = apiCarAdapter
                 getLiveDataCar()
             }
         }
 
-        val apiCarAdapter = ApiCarAdapter(listeCars)
+        val apiCarAdapter = ApiCarAdapter(listeCars, this)
         recyclerView.adapter = apiCarAdapter
         getLiveDataCar()
     }
