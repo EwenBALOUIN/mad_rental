@@ -34,14 +34,16 @@ class DetailFragment : Fragment()
 
         // récupération de l'argument depuis DetailActivity :
         val arguments = requireArguments()
-        val car = arguments.getString(EXTRA_CAR)
-        car_name.text = "intitule"
+        val car_json = arguments.getString(EXTRA_CAR)
+        val car = Gson().fromJson(car_json,CarWithEquipementAndOption::class.java)
         // affichage de l'intitulé s'il a bien été passé en argument :
-//        car?.let {
-//            car_name.text = big_car.nom
-//            value_prixjournalierbase.text = big_car.prixjournalierbase.toString()
-//            value_categorieco2.text = big_car.categorieco2
-//        }
+        car?.let {
+            car_name.text = car.nom
+            value_prixjournalierbase.text = car.prixjournalierbase.toString()
+            value_categorieco2.text = car.categorieco2
+            value_disponible.text = car.disponible.toString()
+            value_promotion.text = car.promotion.toString()
+            value_agemin.text = car.agemin.toString()
+        }
     }
-
 }

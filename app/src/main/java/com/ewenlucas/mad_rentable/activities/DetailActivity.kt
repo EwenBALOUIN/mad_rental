@@ -22,31 +22,17 @@ class DetailActivity : AppCompatActivity()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
-        var equipement = listOf(Equipement(0,""))
-        var option = listOf(Option(0, "", 0))
-        var car : CarWithEquipementAndOption = CarWithEquipementAndOption(0,
-            "",
-            "",
-            0,
-            0,
-            0,
-            0,
-            "",
-            equipement,
-            option
-        );
         // init :
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
 
         // récupération de l'argument depuis l'adapter :
         val jsonCar: String = intent.getStringExtra("EXTRA_CAR")
-        car = Gson().fromJson(jsonCar,CarWithEquipementAndOption::class.java)
 
         // fragment :
         val fragment = DetailFragment()
         val bundle = Bundle()
-        bundle.putString(DetailFragment.EXTRA_CAR, car.toString())
+        bundle.putString(DetailFragment.EXTRA_CAR, jsonCar)
         fragment.arguments = bundle
 
         // transaction :

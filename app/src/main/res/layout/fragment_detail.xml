@@ -11,16 +11,14 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/layout"
             android:layout_width="match_parent"
-            android:layout_height="250px">
+            android:layout_height="300px">
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal" app:layout_constraintTop_toTopOf="parent">
-
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toRightOf="@+id/flag"
                     android:orientation="vertical">
                 <LinearLayout
                         android:id="@+id/name"
@@ -64,6 +62,57 @@
                             android:text="@string/categorieco2"/>
                     <TextView
                             android:id="@+id/value_categorieco2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10px"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/disponible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toTopOf="@id/categorieco2">
+                    <TextView
+                            android:id="@+id/label_disponible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/disponible"/>
+                    <TextView
+                            android:id="@+id/value_disponible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10px"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/promotion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toTopOf="@id/disponible">
+                    <TextView
+                            android:id="@+id/label_promotion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/promotion"/>
+                    <TextView
+                            android:id="@+id/value_promotion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10px"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/agemin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toTopOf="@id/promotion">
+                    <TextView
+                            android:id="@+id/label_agemin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/agemin"/>
+                    <TextView
+                            android:id="@+id/value_agemin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10px"/>
